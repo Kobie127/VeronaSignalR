@@ -5,10 +5,10 @@ using VeronaSingalr;
 public class SignalrHub : Hub
 {
     Rcon rcon = new Rcon();
-    public async Task NewMessage(string user, string message)
+    public async Task NewMessage(string gameId, string command, string itemId, string playerId)
     {
-        RconType rconResponse = rcon.GetRconcCommand(null, null, null, null);
+        RconType rconResponse = rcon.GetRconcCommand(gameId, command, itemId, playerId);
         
-        await Clients.All.SendAsync("messageReceived", user, message);
+        await Clients.All.SendAsync("messageReceived", rconResponse);
     }
 }
