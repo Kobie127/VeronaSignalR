@@ -40,13 +40,13 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.11, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.Azure.SignalR": {
               "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[1.*, )"
             }
           },
           "imports": [

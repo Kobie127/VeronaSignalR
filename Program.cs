@@ -1,21 +1,10 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using VeronaSingalr;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddSignalR().AddAzureSignalR("https://verona-signals.service.signalr.net;AccessKey=7KxJZZnIkHV2B5M7YQQhl9Xz0taGwDktDbzuWSZl1JU=;Version=1.0");
+var app = builder.Build();
 
-namespace VeronaSingalr 
-{
-   public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.UseRouting();
+app.MapHub<SignalrHub>("/verona");
+app.Run();

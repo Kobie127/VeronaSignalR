@@ -29,7 +29,7 @@ namespace VeronaSingalr
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<SignalrHub>("/hub");
+                endpoints.MapHub<SignalrHub>("/verona");
             });
         }
     }
